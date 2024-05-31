@@ -1,0 +1,6 @@
+put required lib in lib path eg:
+C:\Users\tessf\OneDrive\Documents\Arduino
+to check go to IDE > file > preferences
+under Sketchbook location:
+will be the location of lib path
+remember to add corect jason lib verson 5.13.2 only

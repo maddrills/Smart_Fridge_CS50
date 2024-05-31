@@ -1,0 +1,66 @@
+{%extends "layout.html"%}
+{% block title %}
+items_bought
+{% endblock %}
+
+{% block main%}
+<table class = "table tablestriped">
+    <!-- that loops through the table-->
+    <thead>
+        <!-- here is where the head of the table goes goes-->
+        <tr>
+            <th>
+                badge_number
+            </th>
+            <th>
+                product_name
+            </th>
+            <th>
+                amount
+            </th>
+            <th>
+                Exp_date
+            </th>
+            <th>
+                bought_date
+            </th>
+            <th>
+                bought_how
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for itemz in items%}
+        <tr>
+            <td>
+                {{itemz["badge_number"]}}
+            </td>
+            <td>
+                {{itemz["product_name"]}}
+            </td>
+            <td>
+                {{itemz["amount"]}}
+            </td>
+            <td>
+                {{itemz["exp_date"]}}
+            </td>
+            <td>
+                {{itemz["bought_date"]}}
+            </td>
+            <td>
+                {{itemz["bought_how"]}}
+            </td>
+            <td>
+                <form action="/items_bought" method="POST">
+                    <input type = "hidden" name = "dil" value= "{{itemz["badge_number"]}}" >
+                    <button type = "submit"class="form-control mx-auto w-auto" >Remove</button>
+                </form>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+
+{% endblock %}

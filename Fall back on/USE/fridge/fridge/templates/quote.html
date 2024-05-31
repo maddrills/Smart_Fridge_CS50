@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+<!-- here i need to add an extention for the title-->
+{% block title%}
+<!-- here goes the title-->
+quote
+{%endblock%}
+
+{% block main%}
+<!-- here iswhere i need two things a submit button and a form that submits a quote-->
+<form action = "/quote" method = "POST">
+    <!-- i need an input bar with name quote-->
+    <div class="mb-3">
+    <input type = "text" name = "quote" placeholder = "quote">
+    </div>
+    <!-- a buton to submit the data-->
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{% endblock %}

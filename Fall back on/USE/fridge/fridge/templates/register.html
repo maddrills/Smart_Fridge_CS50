@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+ Register
+{%endblock%}
+{%block main%}
+    <!-- here i want to add a form that gets a user subited-->
+    <form action="/register" method="POST">
+        <!-- we will need -->
+        <div class="mb-3">
+        <!--here goes the name field-->
+        <input type = "text" id = "username" name = "username" class="form-control mx-auto w-auto" placeholder = "Name" >
+        </div>
+        <!-- pasword as pasword format -->
+        <input type = "password" id = "password" name = "password" class="form-control mx-auto w-auto" placeholder = "password" >
+        <div class="mb-3">
+        </div>
+        <!--password confermation as pasword java scr to confirm and verify to correct and report if wrong display error 1-->
+        <div class="mb-3">
+        <input type = "password" id = "password" name = "confirmation" class="form-control mx-auto w-auto" placeholder = "Re enter password" >
+        </div>
+        <!-- we may need a button for submiting the form :)-->
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+{%endblock%}

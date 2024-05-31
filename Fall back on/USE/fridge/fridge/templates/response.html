@@ -1,0 +1,14 @@
+{%extends "layout.html"%}
+
+{%block title%}
+<!-- name heding -->
+response
+{%endblock%}
+
+{%block main%}
+<!-- in here i just want to add the results of all my searches-->
+    <!--past the look up here-->
+    <div class="mb-3">
+       the name {{rdata.name}} this is the price {{usd_call(rdata.price)}} this is the symbol {{rdata.symbol}}
+    </div>
+{%endblock%}

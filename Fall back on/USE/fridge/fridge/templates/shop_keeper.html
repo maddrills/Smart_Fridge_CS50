@@ -1,0 +1,216 @@
+{%extends "layout.html"%}
+
+{% block title %}
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="-1">
+{% endblock %}
+
+{% block main %}
+<!-- build a form that submits data to buy databse-->
+<div>
+<p style="color:#FF0000">ONLY FOR DEVELOPER</p>
+</div>
+<form  action="/shop_keeper" method="POST">
+     <div class="mb-3">
+        <input type = "text" id = "product_name" name = "product_name" class="form-control mx-auto w-auto" placeholder = "product_name" type="text" >
+     </div>
+     <div class="mb-3">
+        <input type = "text" id = "cost" name = "cost" class="form-control mx-auto w-auto" placeholder = "cost">
+     </div>
+     <div class="mb-3">
+        <input type = "text" id = "weight" name = "weight" class="form-control mx-auto w-auto" placeholder = "weight">
+     </div>
+     <div class="mb-3">
+        <input type = "text" id = "exp_date" name = "exp_date" class="form-control mx-auto w-auto" placeholder = "exp_date" >
+     </div><div class="mb-3">
+          <button class="btn btn-primary" type="submit">sumbit</button>
+</form>
+</div>
+
+
+<div>
+<p style="color:#FF0000">ONLY FOR DEVELOPER</p>
+</div>
+<form  action="/shop_keeper" method="POST">
+     <div class="mb-3">
+        <input type = "text" id = "tag_id" name = "tag_id" class="form-control mx-auto w-auto" placeholder = "tag_id" type="text" >
+     </div>
+          <button class="btn btn-primary" type="submit">add tag</button>
+</form>
+</div>
+
+<div>
+    <p style="color:#FF0000">ONLY FOR DEVELOPER</p>
+    </div>
+    <form  action="/shop_keeper" method="POST">
+         <div class="mb-3">
+            <input type = "text" id = "produxt_name" name = "produxt_name" class="form-control mx-auto w-auto" placeholder = "product_name">
+         </div>
+         <div class="mb-3">
+            <input type = "number" id = "pin" name = "pin" class="form-control mx-auto w-auto" placeholder = "pin">
+         </div>
+              <button class="btn btn-primary" type="submit">add product</button>
+    </form>
+</div>
+
+<div class="container py-5 text-center">
+<table class="table tablestriped">
+    <thead>
+        <!-- here is where the head of the table goes goes-->
+        <tr>
+            <th>
+                id
+            </th>
+            <th>
+                product_name
+            </th>
+            <th>
+                cost
+            </th>
+            <th>
+                weight kg or ml
+            </th>
+            <th>
+                exp_date
+            </th>
+        </tr>
+    </thead>
+   <tbody>
+    {%for feadbacks in feadback%}
+        <tr>
+            <td>
+                {{feadbacks["id"]}}
+            </td>
+            <td>
+                {{feadbacks["product_name"]}}
+            </td>
+            <td>
+                {{feadbacks["cost"]}}
+            </td>
+            <td>
+                {{feadbacks["weight"]}}
+            </td>
+            <td>
+                {{feadbacks["exp_date"]}}
+            </td>
+        <tr>
+    {%endfor%}
+   </tbody>
+</table>
+</div>
+
+<div class="container py-5 text-center">
+<table class="table tablestriped">
+    <thead>
+        <!-- here is where the head of the table goes goes-->
+        <tr>
+            <th>
+                id
+            </th>
+            <th>
+                tag_id
+            </th>
+            <th>
+                status
+            </th>
+             <th>
+                remove
+            </th>
+        </tr>
+    </thead>
+   <tbody>
+    {%for feadbackz in feadback2%}
+        <tr>
+            <td>
+                {{feadbackz["id"]}}
+
+            </td>
+            <td>
+                {{feadbackz["tag_id"]}}
+            </td>
+            <td>
+                {{feadbackz["status"]}}
+            </td>
+            <td>
+                <form action="/shop_keeper" method="POST">
+                    <input type = "hidden" name = "dil" value= "{{feadbackz["id"]}}" >
+                    <button type = "submit"class="form-control mx-auto w-auto" >delete</button>
+                </form>
+            </td>
+        <tr>
+    {%endfor%}
+   </tbody>
+</table>
+</div>
+
+
+<!-- FOR PRODUCTS -->
+<div class="container py-5 text-center">
+    <table class="table tablestriped">
+        <thead>
+            <!-- here is where the head of the table goes goes-->
+            <tr>
+                <th>
+                    id
+                </th>
+                 <th>
+                    product_name
+                </th>
+                <th>
+                    pin
+                </th>
+            </tr>
+        </thead>
+    <form action="/shop_keeper" method="POST">
+       <tbody>
+        {%for feedbackq in feedback4%}
+            <tr>
+                <td>
+                    {{feedbackq["id"]}}
+                </td>
+                <td>
+                    {{feedbackq["product_name"]}}
+                </td>
+                <td>
+                    {{feedbackq["pin"]}}
+                </td>
+            <tr>
+         {%endfor%}
+       </tbody>
+    </form>
+    </table>
+</div>
+
+
+<div class="container py-5 text-center">
+    <table class="table tablestriped">
+        <thead>
+            <!-- here is where the head of the table goes goes-->
+            <tr>
+                <th>
+                    id
+                </th>
+                 <th>
+                    mod
+                </th>
+            </tr>
+        </thead>
+    <form action="/shop_keeper" method="POST">
+       <tbody>
+        {%for feadbackd in feadback3%}
+            <tr>
+                <td>
+                    <input type = "hidden" name = "mod_id" value = {{feadbackd["tag_id"]}} >
+                    {{feadbackd["tag_id"]}}
+                </td>
+                <td>
+                        <input type = "hidden" name = "mod" value= "1" >
+                        <button type = "submit"class="form-control mx-auto w-auto" >1</button>
+                </td>
+            <tr>
+        {%endfor%}
+       </tbody>
+    </form>
+    </table>
+</div>
+{% endblock %}
