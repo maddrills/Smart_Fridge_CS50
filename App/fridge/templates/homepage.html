@@ -1,0 +1,120 @@
+{%extends "layout.html"%}
+{% block title %}
+cart
+{% endblock %}
+
+{% block main%}
+
+<!--enter the product pin here--->
+{% if not session["productw"] %}
+<table class = "table tablestriped">
+    <thead>
+        <tr>
+            <!---here a number field for the product and an add button--->
+            <form action="/" method="POST">
+                <input type="number" class="form-control mx-auto w-auto" name = "add">
+                <div class="container py-2 text-center"></div>
+                <button type = "submit"class="form-control mx-auto w-auto" >add product</button>
+            </form>
+        </tr>
+    </thead>
+</table>
+
+{%else%}
+<!-- an updater --->
+<form action="/" method="GET">
+    <button type = "submit"class="form-control mx-auto w-auto" >UPDATE AUTO UPDATE TO COME</button>
+</form>
+
+<div class="container py-4 text-center"></div>
+
+
+<!-- shoud show the items in fridge with waight-->
+<table class = "table tablestriped">
+    <!-- that loops through the table-->
+    <thead>
+        <!-- here is where the head of the table goes goes-->
+        <tr>
+            <th>
+                Product_Name
+            </th>
+            <th>
+                Bought_Weight
+            </th>
+            <th>
+                Weight_Left
+            </th>
+            <th>
+                date_Bought
+            </th>
+            <th>
+                Exp_date_of_product
+            </th>
+            <th>
+                Last_used_date_time
+            </th>
+            <th>
+                Bought
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for itemz in items%}
+        <tr>
+            <td>
+                {{itemz["product_name"]}}
+            </td>
+            <td>
+                {{itemz["amount"]}}
+            </td>
+            <td>
+                {{itemz["now_amount"]}}
+            </td>
+            <td>
+                {{itemz["bought_date"]}}
+            </td>
+            <td>
+                {{itemz["exp_date"]}}
+            </td>
+            <td>
+                {{itemz["last_used_time"]}}
+            </td>
+            <td>
+                {{itemz["bought_how"]}}
+            </td>
+            <td>
+                {{itemz["status"]}}
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+    <div class="container py-2 text-center"></div>
+</table>
+        <!--
+        <tr>
+        {%for datas in my_data%}
+            <td> {{datas["field1"]}}</td>
+            <td> {{datas["entry_id"]}}</td>
+        {%endfor%}
+        </tr>
+        -->
+        <form action="/" method="POST">
+            <!-- we will need -->
+            <input type = "hidden" name = "dil" value= "del" >
+             <button type = "submit"class="btn btn-primary" >reset for start</button>
+        </form>
+        <div class="container py-2 text-center"></div>
+        <form action="/" method="POST">
+            <!-- we will need -->
+            <input type = "hidden" name = "dore" value= "remove" >
+             <button type = "submit"class="btn btn-primary" >Close door OR update the removed item</button>
+        </form>
+{% endif %}
+
+{% endblock %}

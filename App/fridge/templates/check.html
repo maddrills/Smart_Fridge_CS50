@@ -1,0 +1,69 @@
+{%extends "layout.html"%}
+
+{% block title %}
+check
+{% endblock %}
+
+{% block main%}
+
+<form action="/check" method="GET">
+    <button type = "submit"class="form-control mx-auto w-auto" >UPDATE AUTO UPDATE TO COME</button>
+</form>
+<!-- shoud show the items in fridge with waight-->
+<div class="container py-5 text-center"></div>
+<table class = "table tablestriped">
+    <!-- that loops through the table-->
+    <thead>
+        <!-- here is where the head of the table goes goes-->
+        <tr>
+            <th>
+                id
+            </th>
+            <th>
+                product_weight
+            </th>
+            <th>
+                total_weight
+            </th>
+            <th>
+                product_rfid
+            </th>
+            <th>
+                product_code
+            </th>
+            <th>
+                last_used_date_time
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for values in all_values%}
+        <tr>
+            <!-- here is where the valuses go-->
+            <td>
+                {{values["id"]}}
+            </td>
+            <td>
+                {{values["product_weight"]}}
+            </td>
+            <td>
+                {{values["product_total"]}}
+            </td>
+            <td>
+                {{values["product_rfid"]}}
+            </td>
+            <td>
+                {{values["product_code"]}}
+            </td>
+            <td>
+                {{values["last_used_date_time"]}}
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+</div>
+
+{% endblock %}

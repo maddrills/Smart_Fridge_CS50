@@ -1,0 +1,74 @@
+{%extends "layout.html"%}
+{% block title %}
+Buy
+{% endblock %}
+
+{% block main%}
+<!-- shoud show the items in fridge with waight-->
+<div class="container py-5 text-center"></div>
+<table class = "table tablestriped">
+    <!-- that loops through the table-->
+    <thead>
+        <!-- here is where the head of the table goes goes-->
+        <tr>
+            <th>
+                product_name
+            </th>
+            <th>
+                cost
+            </th>
+            <th>
+                weight
+            </th>
+            <th>
+                exp_date
+            </th>
+            <th>
+                tag_id
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for values in items%}
+        <form action="/buy" method="POST">
+        <tr>
+            <!-- here is where the valuses go-->
+            <td>
+                <input type = "hidden" name = "pname" value = {{values["product_name"]}} >
+                {{values["product_name"]}}
+            </td>
+            <td>
+                <input type = "hidden" name = "pcost" value = {{values["cost"]}} >
+                {{values["cost"]}}
+            </td>
+            <td>
+                <input type = "hidden" name = "pweight" value = {{values["weight"]}} >
+                {{values["weight"]}}
+            </td>
+            <td>
+                <input type = "hidden" name = "phidden" value = {{values["exp_date"]}} >
+                {{values["exp_date"]}}
+            </td>
+            <!-- here is where the valuses go-->
+                <td>
+                    <select type = "hidden" name = "rfid">
+                        <option class="container py-5 text-center"disable selected>rfid</option>
+                    {%for valuez in available_tags%}
+                        <option class="container py-5 text-center">{{valuez['tag_id']}}</option>
+                    {%endfor%}
+                    </select>
+                </td>
+                <td>
+                    <button type = "submit" class="form-control mx-auto w-auto" >Buy</button>
+                </td>
+        </tr>
+        </form>
+        {%endfor%}
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+</div>
+{% endblock %}
